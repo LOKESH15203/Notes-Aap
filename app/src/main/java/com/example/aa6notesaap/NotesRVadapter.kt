@@ -16,7 +16,7 @@ class NotesRVadapter(private val context : Context, private val listener: INotes
     private val allNotes = ArrayList<Notes>()
 
     inner class NotesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val textView :TextView = itemView.findViewById<TextView>(R.id.text)
+        val textView :TextView = itemView.findViewById<TextView>(R.id.textTitle)
         val deleteButton : ImageView = itemView.findViewById<ImageView>(R.id.deleteBut)
     }
 
@@ -34,7 +34,8 @@ class NotesRVadapter(private val context : Context, private val listener: INotes
 
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
         val currentNote = allNotes[position]
-        holder.textView.text = currentNote.text
+        holder.textView.text = currentNote.noteTitle
+
     }
 
     fun updataList(newList : List<Notes>){
@@ -48,4 +49,8 @@ class NotesRVadapter(private val context : Context, private val listener: INotes
 
 interface INotesRVadapter{
     fun onItemClicked(notes: Notes)
+}
+
+interface NoteClickedInterface{
+    fun onNoteClick(note : Notes)
 }

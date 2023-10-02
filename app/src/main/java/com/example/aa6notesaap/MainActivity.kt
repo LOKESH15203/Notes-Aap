@@ -21,8 +21,9 @@ class MainActivity : AppCompatActivity(), INotesRVadapter {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         val adapter = NotesRVadapter(this, this)
         binding.recyclerView.adapter = adapter
